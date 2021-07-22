@@ -1,7 +1,8 @@
 function App() {
   return (
     <div className="App">
-      <h3>Proyecto ReactJs</h3>
+      <h1>Espiritu en Movimiento</h1>
+      <p>Proyecto en ReactJs</p>
     </div>
   );
 }
