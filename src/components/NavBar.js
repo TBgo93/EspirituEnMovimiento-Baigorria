@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, Container, Navbar, NavbarBrand } from 'react-bootstrap';
-import CardWidget from './CardWidget';
+import CartWidget from './CartWidget';
 
 function NavBar() {
     return (
@@ -15,7 +15,7 @@ function NavBar() {
                 <Nav.Link href="#">Buscar</Nav.Link>
                 <Nav.Link href="#">Iniciar Sesion</Nav.Link>
                 <Nav.Link href="#">
-                    <CardWidget />
+                    <CartWidget />
                 </Nav.Link>
             </Nav>
         </Container>
