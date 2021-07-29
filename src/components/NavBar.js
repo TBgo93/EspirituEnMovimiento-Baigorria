@@ -1,9 +1,10 @@
 import React from 'react';
 import { Nav, Container, Navbar, NavbarBrand } from 'react-bootstrap';
+import CardWidget from './CardWidget';
 
 function NavBar() {
     return (
-    <Navbar fixed="top" expand="lg" variant="primary">
+    <Navbar expand="lg" variant="primary">
         <Container>
             <Nav>
                 <Nav.Link href="#">Rutinas</Nav.Link>
@@ -13,7 +14,9 @@ function NavBar() {
             <Nav>
                 <Nav.Link href="#">Buscar</Nav.Link>
                 <Nav.Link href="#">Iniciar Sesion</Nav.Link>
-                <Nav.Link href="#">Carrito</Nav.Link>
+                <Nav.Link href="#">
+                    <CardWidget />
+                </Nav.Link>
             </Nav>
         </Container>
     </Navbar>
