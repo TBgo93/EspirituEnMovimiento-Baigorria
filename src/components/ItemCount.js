@@ -5,7 +5,7 @@ import { MdAdd, MdRemove } from 'react-icons/md';
 
 
 function ItemCount({ stock, initial, onAdd }){
-    if(stock === 0 || stock === undefined){
+    if(stock === 0 || stock === '0' || stock === undefined){
         initial = 0
     }
     const [itemCount, setItemCount] = useState(Number(initial));
@@ -15,7 +15,7 @@ function ItemCount({ stock, initial, onAdd }){
         }
     }
     const itemDecrease = () => {
-        if(itemCount > 0){
+        if(itemCount > initial){
             setItemCount(itemCount - Number(1))
         }
     }
@@ -35,7 +35,7 @@ function ItemCount({ stock, initial, onAdd }){
                     </Button>
                 </Container>
             </Card.Body>
-            {stock === 0 ||  stock === undefined ? (
+            {stock === 0 || stock === '0' || stock === undefined ? (
                 <Button variant="primary" disabled>Agregar al carrito</Button>
                 ) : (
                 <Button variant="primary" onClick={onAdd}>Agregar al carrito</Button>
