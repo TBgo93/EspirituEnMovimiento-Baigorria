@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap'
+import ItemCount from './ItemCount'
 
 function ItemListContainer( { greeting } ){
     const styleFont = {
@@ -10,6 +11,7 @@ function ItemListContainer( { greeting } ){
     return <>
         <Container style={styleFont}>
             <h3>{greeting}</h3>
+            <ItemCount stock={6} initial={1} />
         </Container>
     </>
 };

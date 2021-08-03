@@ -1,9 +1,9 @@
 import React from 'react';
-import { MdShoppingCart } from 'react-icons/md';
+import { HiOutlineShoppingCart } from 'react-icons/hi';
 
 function CardWidget (){
     return <>
-        <MdShoppingCart />
+        <HiOutlineShoppingCart />
     </>;
 }
 export default CardWidget;

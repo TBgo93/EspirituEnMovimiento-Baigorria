@@ -4,20 +4,21 @@ import CartWidget from './CartWidget';
 
 function NavBar() {
     return (
-    <Navbar expand="lg" variant="primary">
+    <Navbar collapseOnSelect expand="sm" variant="primary">
         <Container>
             <Nav>
-                <Nav.Link href="#">Rutinas</Nav.Link>
-                <Nav.Link href="#">Clases Online</Nav.Link>
-            </Nav>
-            <NavbarBrand href="#">Espiritu en Movimiento</NavbarBrand>
-            <Nav>
-                <Nav.Link href="#">Buscar</Nav.Link>
-                <Nav.Link href="#">Iniciar Sesion</Nav.Link>
                 <Nav.Link href="#">
                     <CartWidget />
                 </Nav.Link>
             </Nav>
+            <NavbarBrand href="#">Espiritu en Movimiento</NavbarBrand>
+            <Navbar.Toggle aria-controls="responsive-navbar" />
+            <Navbar.Collapse id="responsive-navbar" className="flex-grow-0">
+                <Nav>
+                    <Nav.Link href="#">Rutinas</Nav.Link>
+                    <Nav.Link href="#">Clases Online</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
         </Container>
     </Navbar>
     );
