@@ -2,3 +2,13 @@
     width: 16rem;
     text-align: center
 }
+.ItemList{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 254px);
+    grid-gap: 1rem 0;
+    gap: 1rem;
+    margin: 2rem 1rem;
+}
+.card-img-top{
+    height: 170px;
+}
