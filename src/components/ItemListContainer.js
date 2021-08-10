@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap'
 import getProducts from '../api/getProducts';
+import productos from '../api/Products'
 import ItemList from './ItemList'
 
 const styleFont = {
@@ -12,8 +13,8 @@ function ItemListContainer( { greeting } ){
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        getProducts().then(productos =>{
-            setProducts(productos)
+        getProducts(productos).then(item =>{
+            setProducts(item)
         })
     },[])
 

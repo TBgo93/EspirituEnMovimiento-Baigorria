@@ -12,3 +12,10 @@
 .card-img-top{
     height: 170px;
 }
+.card-img-overlay > .card-header,
+.card-img-overlay > .card-title{
+    color: #fff;
+}
+.ItemDetail{
+    width: 90%;
+}
