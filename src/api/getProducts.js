@@ -1,4 +1,12 @@
-function getProducts(arrProducts){
+import { Rutinas, ClasesOnline } from '../api/Products'
+
+function getProducts(arrProducts) {
+    if (arrProducts === 'rutinas') {
+        arrProducts = Rutinas
+    }else if(arrProducts === 'clases') {
+        arrProducts = ClasesOnline
+    }
+
     const promiseProducts = new Promise((resolve, reject) => {
         setTimeout(() =>{
             resolve(arrProducts)

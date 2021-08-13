@@ -1,26 +1,30 @@
 import React from 'react';
-import { Nav, Container, Navbar, NavbarBrand } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom'
+import { Nav, Container, Navbar } from 'react-bootstrap';
 import CartWidget from './CartWidget';
+
 
 function NavBar() {
     return (
-    <Navbar collapseOnSelect expand="sm" variant="primary">
-        <Container>
-            <Nav>
-                <Nav.Link href="#">
-                    <CartWidget />
-                </Nav.Link>
-            </Nav>
-            <NavbarBrand href="#">Espiritu en Movimiento</NavbarBrand>
-            <Navbar.Toggle aria-controls="responsive-navbar" />
-            <Navbar.Collapse id="responsive-navbar" className="flex-grow-0">
+        <Navbar collapseOnSelect expand="sm" variant="primary" bg="light">
+            <Container>
                 <Nav>
-                    <Nav.Link href="#">Rutinas</Nav.Link>
-                    <Nav.Link href="#">Clases Online</Nav.Link>
+                    <NavLink className="nav-link" to={`/cart`}>
+                        <CartWidget />
+                    </NavLink>
                 </Nav>
-            </Navbar.Collapse>
-        </Container>
-    </Navbar>
+                <NavLink className="navbar-brand" to="/">Espiritu en Movimiento</NavLink>
+                <Navbar.Toggle aria-controls="responsive-navbar">
+
+                </Navbar.Toggle>
+                <Navbar.Collapse id="responsive-navbar" className="flex-grow-0">
+                    <Nav>
+                        <NavLink className="nav-link" to="/category/rutinas">Rutinas</NavLink>
+                        <NavLink className="nav-link" to="/category/clases">Clases Online</NavLink>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 }
 

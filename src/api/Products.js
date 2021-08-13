@@ -1,4 +1,4 @@
-const productos = [
+const Rutinas = [
   {
       id: 1,
       title: "Rutina Miembro Inferior",
@@ -35,4 +35,28 @@ const productos = [
       pictureUrl: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80"
   }
 ]
-export default productos
+
+const ClasesOnline = [
+    {
+        id: 6,
+        title: "Yoga Funcional",
+        description: "Clases en vivo de Yoga Funcional",
+        price: 1500,
+        pictureUrl: "https://images.unsplash.com/photo-1532798442725-41036acc7489?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=667&q=80"
+	},
+	{
+        id: 7,
+        title: "Entrenamiento Personalizado",
+        description: "Clases en vivo con Entrenamiento Personalizado",
+        price: 2500,
+        pictureUrl: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+	},
+	{
+        id: 8,
+        title: "Recuperacion Asisitida",
+        description: "Tratamiento de recuperacion asistida",
+        price: 2200,
+        pictureUrl: "https://images.unsplash.com/photo-1540206235220-7590996b7a5a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+    }
+]
+export { Rutinas, ClasesOnline }

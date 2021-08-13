@@ -1,9 +1,11 @@
-import productos from './Products'
+import { Rutinas, ClasesOnline } from './Products'
 
 function getProductByID(idProduct) {
+  let arrProduct = idProduct <= 5 ? Rutinas : ClasesOnline;
+
   const promiseProduct = new Promise((resolve, reject) => {
       setTimeout(() =>{
-          resolve(productos)
+          resolve(arrProduct)
       }, 2000)
   });
   
