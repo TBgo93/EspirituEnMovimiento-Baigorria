@@ -5,6 +5,7 @@ import ItemDetailContainer from '../components/ItemDetailContainer';
 import NavBar from '../components/NavBar'
 import Home from '../pages/Home';
 import NotFound from '../pages/404';
+import Cart from '../pages/Cart';
 
 
 function Router() {
@@ -21,6 +22,9 @@ function Router() {
           </Route>
           <Route path="/item/:id" >
             <ItemDetailContainer />
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route>
           <Route path="*" component={NotFound} />
         </Switch>

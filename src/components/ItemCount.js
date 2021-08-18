@@ -3,7 +3,6 @@ import { Button, Card, Container } from 'react-bootstrap'
 import { MdAdd, MdRemove } from 'react-icons/md';
 
 
-
 function ItemCount({ stock, initial, onAdd }){
     if(stock === 0 || stock === '0' || stock === undefined){
         initial = 0
@@ -23,7 +22,6 @@ function ItemCount({ stock, initial, onAdd }){
     return (
         <>
         <Card>
-            <Card.Header>Producto</Card.Header>
             <Card.Body>
                 <Container className="d-flex justify-content-around">
                     <Button variant="outline-primary" onClick={itemDecrease}>
@@ -34,13 +32,13 @@ function ItemCount({ stock, initial, onAdd }){
                         <MdAdd />
                     </Button>
                 </Container>
-            </Card.Body>
-            {stock === 0 || stock === '0' || stock === undefined ? (
-                <Button variant="primary" disabled>Agregar al carrito</Button>
+                </Card.Body>
+                {stock === 0 || stock === '0' || stock === undefined ? (
+                <Button variant="primary" disabled>Sin Stock</Button>
                 ) : (
-                <Button variant="primary" onClick={onAdd}>Agregar al carrito</Button>
+                <Button variant="primary" onClick={() => onAdd(itemCount)}>Agregar al carrito</Button>
                 )
-            }
+                }
         </Card>
         </>
     )
