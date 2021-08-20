@@ -2,6 +2,10 @@ html,
 #root{
     background-color: #ddd;
 }
+.btn-clean-cart{
+    width: fit-content;
+    z-index: 9;
+}
 .card{
     width: 16rem;
     text-align: center
