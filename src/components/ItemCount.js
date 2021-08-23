@@ -1,6 +1,5 @@
 import React,{ useState } from 'react'
-import { Button, Card, Container } from 'react-bootstrap'
-import { MdAdd, MdRemove } from 'react-icons/md';
+import { Button, Card, Icon } from 'semantic-ui-react'
 
 
 function ItemCount({ stock, initial, onAdd }){
@@ -21,25 +20,23 @@ function ItemCount({ stock, initial, onAdd }){
 
     return (
         <>
-        <Card>
-            <Card.Body>
-                <Container className="d-flex justify-content-around">
-                    <Button variant="outline-primary" onClick={itemDecrease}>
-                        <MdRemove />
+            <Card.Content>
+                <div className="d-flex justify-content-evenly m-4">
+                    <Button color='blue' icon onClick={itemDecrease}>
+                        <Icon name='minus' />
                     </Button>
-                    <Card.Text>{itemCount}</Card.Text>
-                    <Button variant="outline-primary" onClick={itemIncrease}>
-                        <MdAdd />
+                        <Card.Description>{itemCount}</Card.Description>
+                    <Button color='blue' icon onClick={itemIncrease}>
+                        <Icon name='plus' />
                     </Button>
-                </Container>
-                </Card.Body>
+                </div>
                 {stock === 0 || stock === '0' || stock === undefined ? (
-                <Button variant="primary" disabled>Sin Stock</Button>
-                ) : (
-                <Button variant="primary" onClick={() => onAdd(itemCount)}>Agregar al carrito</Button>
-                )
-                }
-        </Card>
+                    <Button disabled>Sin Stock</Button>
+                    ) : (
+                        <Button onClick={() => onAdd(itemCount)}>Agregar al carrito</Button>
+                        )
+                    }
+            </Card.Content>
         </>
     )
 }

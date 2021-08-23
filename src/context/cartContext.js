@@ -17,10 +17,14 @@ function CartProvider({ children }) {
   //Funcionando
   const clearAll = () => setItems([])
   //Funcionando
-  const isInCart = (id) => items.some(item => item.item.id === id )
-
+  const isInCart = (id) => items.some(item => item.item.id === id)
+  //Funcionando
+  const moreQuantity = (id, quant) => {
+    const product = items.find(item => item.item.id === id)
+    product.quantity += quant
+  }
   return (
-    <CartContext.Provider value={{ items, addItem, removeItem, clearAll, isInCart }}>
+    <CartContext.Provider value={{ items, addItem, removeItem, clearAll, isInCart, moreQuantity }}>
       { children }
     </CartContext.Provider>
   )

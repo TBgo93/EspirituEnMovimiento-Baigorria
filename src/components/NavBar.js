@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
-import { Nav, Container, Navbar } from 'react-bootstrap';
+import { Container , Nav, Navbar } from 'react-bootstrap';
 import CartWidget from './CartWidget';
 
 
@@ -17,9 +17,7 @@ function NavBar() {
                     </Nav>
                 </Navbar.Collapse>
                 <Nav>
-                    <NavLink className="nav-link" to={`/cart`}>
-                        <CartWidget />
-                    </NavLink>
+                    <CartWidget />
                 </Nav>
             </Container>
         </Navbar>

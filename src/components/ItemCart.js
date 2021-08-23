@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../context/cartContext';
-import { Button, Card } from 'react-bootstrap';
-import { HiOutlineTrash } from 'react-icons/hi';
+import { Image, Table } from 'semantic-ui-react';
 
 
 function ItemCart({ id, title, price, pictureUrl, quantity }) {
@@ -9,19 +8,19 @@ function ItemCart({ id, title, price, pictureUrl, quantity }) {
 
   return(
     <>
-      <Card className="flex-row align-items-center">
-        <Card.Img variant="top" src={pictureUrl} alt={title} />
-        <Card.ImgOverlay>
-          <Card.Title>{title}</Card.Title>
-        </Card.ImgOverlay>
-        <Card.Body>
-          <Card.Text>Cantidad: {quantity}</Card.Text>
-          <Card.Text>Precio: ${price}</Card.Text>
-        </Card.Body>
-        <Button variant="danger" className="btn-clean-cart" onClick={() => removeItem(id)}>
-          <HiOutlineTrash />
-        </Button>
-      </Card>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>
+            <Image avatar src={pictureUrl} alt={title} />
+          </Table.Cell>
+          <Table.Cell>{title}</Table.Cell>
+          <Table.Cell>{quantity}</Table.Cell>
+          <Table.Cell>${price}</Table.Cell>
+          <Table.Cell>${Number(price) * Number(quantity)}</Table.Cell>
+          <Table.Cell onClick={() => removeItem(id)}>Eliminar</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+
     </>
   )
 }

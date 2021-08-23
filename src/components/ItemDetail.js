@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react'
 import { CartContext } from '../context/cartContext';
-import { Card } from 'react-bootstrap';
+import { Card, Image, Loader } from 'semantic-ui-react';
 import ItemCount from './ItemCount'
-import CartButton from './CartButton'
+import { CartButton, ConditionalButtons } from './CartButton'
 
 
 function ItemDetail({ item }) {
-	const { id, title, price, description, pictureUrl } = item
+	const { id, title, price, description, stock,  pictureUrl } = item
     const [quantity, setQuantity] = useState(0)
     const { addItem, isInCart } = useContext(CartContext)
 
@@ -15,23 +15,25 @@ function ItemDetail({ item }) {
 		addItem(item, quantityOnAdd, true)
     }
 
-    return(
-    <>
-        <Card className="ItemDetail">
-        <div className="row no-gutters">
-            <div className="col-md-6">
-            <Card.Img src={pictureUrl} alt={title} />
+    return (
+        <>
+        {
+            item.length === 0 ? <Loader  active inline='centered' size='large'>Cargando...</Loader>
+            :
+            <div className="ItemDetail">
+                <Image src={pictureUrl} wrapped ui={false} />
+                <Card>
+                    <Card.Content>
+                        <Card.Header>{title}</Card.Header>
+                        <Card.Description>{description}</Card.Description>
+                    <Card.Content extra>Precio: ${price}</Card.Content>
+                    {
+                        !isInCart(id) ? (quantity === 0 ? <ItemCount stock={stock} initial={1} onAdd={onAdd} /> : <CartButton />) : <ConditionalButtons id={id} stock={Number(stock) - Number(quantity)} />
+                    }
+                    </Card.Content>
+                </Card>
             </div>
-            <Card.Body className="col-md-6 d-flex flex-column justify-content-evenly align-items-center">
-            <Card.Title>#{id} - {title}</Card.Title>
-            <Card.Text>{description}</Card.Text>
-			<Card.Subtitle>Precio: ${price}</Card.Subtitle>
-			{
-				!isInCart(id) ? (quantity === 0 ? <ItemCount stock={10} initial={1} onAdd={onAdd} /> : <CartButton />) : <CartButton />
-            }
-            </Card.Body>
-        </div>
-        </Card>
+        }
     </>
     )
 }
