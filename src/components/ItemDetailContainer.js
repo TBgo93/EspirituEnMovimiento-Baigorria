@@ -1,13 +1,12 @@
 import React,{ useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap'
+import { Container } from 'semantic-ui-react'
 import { useParams } from 'react-router-dom';
-import getProductByID from '../api/getProductByID';
+import { getProductById } from '../api/getProductById';
 import ItemDetail from './ItemDetail';
 
 const styleFont = {
     fontWeight : 600,
     textAlign : "center",
-    marginTop: 32
 }
 
 function ItemDetailContainer() {
@@ -15,7 +14,7 @@ function ItemDetailContainer() {
     const [productDetail, setProductDetail] = useState([])
 
     useEffect(() => {
-        getProductByID(Number(id)).then(itemDetail =>{
+        getProductById(id).then(itemDetail =>{
             setProductDetail(itemDetail)
         })
     }, [id])

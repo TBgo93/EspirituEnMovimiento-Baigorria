@@ -1,26 +1,32 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
-import { Container , Nav, Navbar } from 'react-bootstrap';
+import { } from 'semantic-ui-react'
 import CartWidget from './CartWidget';
+import WishListWidget from './WishListWidget'
 
 
 function NavBar() {
     return (
-        <Navbar collapseOnSelect expand="sm" variant="primary" bg="light">
-            <Container>
-                <Navbar.Toggle aria-controls="responsive-navbar" />
+        <nav className="navbar">
+            <div className="nav-container">
                 <NavLink className="navbar-brand" to="/">Espiritu en Movimiento</NavLink>
-                <Navbar.Collapse id="responsive-navbar" className="flex-grow-0">
-                    <Nav>
-                        <NavLink className="nav-link" to="/category/rutinas">Rutinas</NavLink>
-                        <NavLink className="nav-link" to="/category/clases">Clases Online</NavLink>
-                    </Nav>
-                </Navbar.Collapse>
-                <Nav>
+                <div className="navbar-nav">
+                    <NavLink className="nav-link" to="/categories/Rutinas">
+                        Rutinas
+                    </NavLink>
+                    <NavLink className="nav-link" to="/categories/ClasesOnline">
+                        Clases Online
+                    </NavLink>
+                    <NavLink className="nav-link" to="/categories/Combos">
+                        Combos
+                    </NavLink>
+                </div>
+                <div className="navbar-nav">
+                    <WishListWidget />
                     <CartWidget />
-                </Nav>
-            </Container>
-        </Navbar>
+                </div>
+            </div>
+        </nav>
     );
 }
 

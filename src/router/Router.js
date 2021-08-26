@@ -6,6 +6,7 @@ import NavBar from '../components/NavBar'
 import Home from '../pages/Home';
 import NotFound from '../pages/404';
 import Cart from '../pages/Cart';
+import WishList from '../pages/WishList';
 
 
 function Router() {
@@ -17,7 +18,7 @@ function Router() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/category/:id">
+          <Route path="/categories/:id">
             <ItemListContainer />
           </Route>
           <Route path="/item/:id" >
@@ -25,6 +26,9 @@ function Router() {
           </Route>
           <Route path="/cart">
             <Cart />
+          </Route>
+          <Route path="/wishlist">
+            <WishList />
           </Route>
           <Route path="*" component={NotFound} />
         </Switch>

@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../context/cartContext';
-import { HomeButton } from './CartButton'
+import { HomeButton } from './CustomButtons'
 import { Button, Container, Icon, Table } from 'semantic-ui-react'
 import ItemCart from './ItemCart';
+import { ModalVaciarCarrito } from './Modals'
+
 
 const styleFont = {
     fontWeight : 600,
     textAlign : "center",
-    marginTop: 32
 }
 
 function CartContainer() {
@@ -29,6 +30,7 @@ function CartContainer() {
           </>
           :
           <>
+            <h2>Resumen de Compra</h2>
             <Table basic='very'>
             <Table.Header>
               <Table.Row>
@@ -58,12 +60,14 @@ function CartContainer() {
               listCart.map(({ price, quantity }) => price * quantity,).reduce((acc,el) => acc + el)
             }
             </strong>
-            <Button animated color="blue" onClick={() => clearAll()}>
-              <Button.Content visible>Limpiar Carrito</Button.Content>
-              <Button.Content hidden>
-                <Icon name='trash' />
-              </Button.Content>
-            </Button>
+            <ModalVaciarCarrito fn={() => clearAll()}>
+              <Button animated color="blue">
+                <Button.Content visible>Limpiar Carrito</Button.Content>
+                <Button.Content hidden>
+                  <Icon name='trash' />
+                </Button.Content>
+              </Button>
+            </ModalVaciarCarrito>
           </>
         }
         </Container>

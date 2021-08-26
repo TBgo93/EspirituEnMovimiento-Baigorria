@@ -1,20 +1,17 @@
-import { Rutinas, ClasesOnline } from './Products'
+import { getFirestore } from '../firebase';
 
-function getProductByID(idProduct) {
-  let arrProduct = idProduct <= 5 ? Rutinas : ClasesOnline;
-
-  const promiseProduct = new Promise((resolve, reject) => {
-      setTimeout(() =>{
-          resolve(arrProduct)
-      }, 2000)
-  });
-  
-  return promiseProduct
-    .then(res => {
-      return res.find(element => element.id === idProduct)
-  }, err => {
-      console.log(err)
-  });
+export const getProductById = (idProduct) => {
+  const db = getFirestore()
+  const productsCollection = db.collection("products").doc(idProduct)
+  const product = productsCollection.get()
+  .then((doc) => {  
+    if (!doc.exists) {
+      console.log('No product')
+      return
+    }
+    const { id } = doc
+    const { title, description, price, pictureUrl, stock } = doc.data()
+    return { id, title, description, price, pictureUrl, stock }
+  })
+  return product
 }
-
-export default getProductByID;

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { useHistory } from 'react-router';
 import { CartContext } from '../context/cartContext';
 import { Button, Card, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
@@ -34,18 +35,15 @@ function CartButton() {
   )
 }
 
-function AddToCart({ id, quantity }) {
-  const { moreQuantity } = useContext(CartContext)
-
-  return (
-    <>
-      <Button color="grey" onClick={() => moreQuantity(id,quantity)}>Agregar mas</Button>
-    </>
-  )
-}
-
-function ConditionalButtons({ id, stock }) {
+function AddMore({ id, stock }) {
   const [itemCount, setItemCount] = useState(1);
+  const { moreQuantity, totalQuantity } = useContext(CartContext)
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/cart`);
+    }
+
   const itemIncrease = () => {
     if(itemCount < stock){
         setItemCount(itemCount + Number(1))
@@ -56,26 +54,30 @@ function ConditionalButtons({ id, stock }) {
         setItemCount(itemCount - Number(1))
     }
   }
+
+  const moreItems = () => {
+    moreQuantity(id, itemCount)
+    totalQuantity(itemCount)
+    handleClick() 
+  }
+
   return (
     <>
       <Card.Content>
-        <div className="d-flex justify-content-evenly m-4">
-            <Button color='blue' icon onClick={itemDecrease}>
+        <div className="count-container">
+            <Button color='black' icon onClick={itemDecrease}>
                 <Icon name='minus' />
             </Button>
                 <Card.Description>{itemCount}</Card.Description>
-            <Button color='blue' icon onClick={itemIncrease}>
+            <Button color='black' icon onClick={itemIncrease}>
                 <Icon name='plus' />
             </Button>
         </div>
+        <Button color="blue" onClick={() => moreItems() }>Agregar mas cantidad</Button>
       </Card.Content>
-      <Button.Group>
-        <AddToCart id={id} quantity={itemCount}/>
-        <Button.Or text="O"/>
-        <CartButton />
-      </Button.Group>
     </>
   )
 }
 
-export { CartButton, ConditionalButtons, HomeButton} 
+
+export { CartButton, AddMore, HomeButton } 

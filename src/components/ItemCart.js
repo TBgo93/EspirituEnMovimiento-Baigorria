@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../context/cartContext';
 import { Image, Table } from 'semantic-ui-react';
+import { ModalEliminarItem } from './Modals'
 
 
 function ItemCart({ id, title, price, pictureUrl, quantity }) {
@@ -17,7 +18,9 @@ function ItemCart({ id, title, price, pictureUrl, quantity }) {
           <Table.Cell>{quantity}</Table.Cell>
           <Table.Cell>${price}</Table.Cell>
           <Table.Cell>${Number(price) * Number(quantity)}</Table.Cell>
-          <Table.Cell onClick={() => removeItem(id)}>Eliminar</Table.Cell>
+          <ModalEliminarItem fn={() => removeItem(id, quantity)}>
+            <Table.Cell>Eliminar</Table.Cell>
+          </ModalEliminarItem>
         </Table.Row>
       </Table.Body>
 

@@ -1,16 +1,18 @@
 import React from 'react';
 import Router from '../router/Router';
 import { CartProvider } from '../context/cartContext';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { WishListProvider } from '../context/wishListContext';
 import 'semantic-ui-css/semantic.min.css'
 import './App.css'
 
 export default function App() {
   return (
     <>
-      <CartProvider>
-        <Router />
-      </CartProvider>
+      <WishListProvider>
+        <CartProvider>
+          <Router />
+        </CartProvider>
+      </WishListProvider>
     </>
   );
 }

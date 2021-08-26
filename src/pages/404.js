@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, Button } from 'react-bootstrap'
+import { Container, Button } from 'semantic-ui-react'
+
 
 function NotFound() {
   return (

@@ -1,15 +1,15 @@
 import React from 'react'
-import { Button, Card, Icon, Image } from 'semantic-ui-react';
+import { Button, Card, Image } from 'semantic-ui-react';
 import { useHistory } from "react-router-dom";
 
 
 
 function Item(items) {
-  const { id, title, price, description, pictureUrl } = items
+  const { id, title, price, pictureUrl } = items
   const history = useHistory();
 
-  const handleClick = () => {
-    history.push(`/item/${id}`);
+  const handleClick = (idItem) => {
+    history.push(`/item/${idItem}`);
   }
 
   return(
@@ -18,14 +18,10 @@ function Item(items) {
         <Image src={pictureUrl} wrapped ui={false} />
         <Card.Content>
           <Card.Header>{title}</Card.Header>
-          <Card.Description>{description}</Card.Description>
+          <Card.Description>Precio: ${price}</Card.Description>
         </Card.Content>
-        <Card.Content extra>Precio: ${price}</Card.Content>
-        <Button animated='vertical' color='green' onClick={handleClick}>
-          <Button.Content visible>Ver Mas</Button.Content>
-          <Button.Content hidden>
-            <Icon name='shop' />
-          </Button.Content>
+        <Button color='yellow' onClick={() => handleClick(id)}>
+          Ver Mas
         </Button>
       </Card>
     </>

@@ -1,8 +1,8 @@
 import { getFirestore } from '../firebase';
 
-export const getProductsByLowerPrice = () => {
+export const getProductsByCategories = (idCategory) => {
   const db = getFirestore()
-  const productsCollection = db.collection("products").where("price", "<", 4000)
+  const productsCollection = db.collection("products").where("categoryName", "==", `${idCategory}`)
   const arrProducts = productsCollection.get()
   .then((querySnapshot) => {
     if (querySnapshot.size === 0) {
