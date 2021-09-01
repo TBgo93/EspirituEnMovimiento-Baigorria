@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../context/cartContext';
-import { HomeButton } from './CustomButtons'
+import { CheckOutButton, HomeButton } from './CustomButtons'
 import { Button, Container, Icon, Table } from 'semantic-ui-react'
 import ItemCart from './ItemCart';
 import { ModalVaciarCarrito } from './Modals'
@@ -13,17 +13,25 @@ const styleFont = {
 
 function CartContainer() {
   const { items, clearAll } = useContext(CartContext)
+  const [currentTotal, setCurrentTotal] = useState(0)
 
   const listCart = items.map(item => {
     const { quantity } = item
     const { id, title, price, description, pictureUrl } = item.item
     return { id, title, price, description, pictureUrl, quantity }
   })
+
+  useEffect(() => {
+    if (listCart.length > 0) {
+      const total = listCart.map(({ price, quantity }) => price * quantity,).reduce((acc, el) => acc + el)
+      setCurrentTotal(total)
+    }
+  },[listCart])
   
   return <>
       <Container style={styleFont}>
         {
-        listCart.length === 0 ?
+        items.length === 0 ?
           <>
             <h3>Tu carrito esta vacio</h3>
             <HomeButton />
@@ -55,10 +63,9 @@ function CartContainer() {
               )
             }
             </Table>
-            <strong className="totalPrice">Total de la compra: $
-            {
-              listCart.map(({ price, quantity }) => price * quantity,).reduce((acc,el) => acc + el)
-            }
+            <CheckOutButton />
+            <strong className="totalPrice">
+              Total de la compra: $ {currentTotal}
             </strong>
             <ModalVaciarCarrito fn={() => clearAll()}>
               <Button animated color="blue">

@@ -1,10 +1,20 @@
-html,
-#root,
 body{
     background-color: #ddd;
+    height: 100vh;
+
 }
 div.container{
     margin-top: 5rem;
+}
+.animationLink{
+    animation: destello 1.5s ease infinite;
+}
+@keyframes destello {
+    from {
+        text-shadow: 0px 0px 8px #fbbd08, 0px 0px 8px #fbbd08, 0px 0px 16px #fbbd08,
+        0px 0px 16px #fbbd08, 0px 0px 16px #fbbd08, 0px 0px 16px #fbbd08, 0px 0px 16px #fbbd08,
+        0px 0px 16px #fbbd08, 0px 0px 32px #fbbd08, 0px 0px 32px #fbbd08;
+    }
 }
 /* Loader */
 .ui.big.active.text.centered.inline.loader.loader{
@@ -154,6 +164,27 @@ table.basic.table tbody tr td span:first-child{
 table.basic.table tbody tr td span:last-child{
     color: blue;
 }
+/* CheckOut */
+.checkOutContainer{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+    padding: 2rem 0;
+}
+.checkOutDetail{
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.checkOutContainer form{
+    width: 75vh !important;
+    background: #aaa;
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+/* MediaQueries */
 @media screen and (max-width: 640px) {
     .ItemDetail {
         display: flex;

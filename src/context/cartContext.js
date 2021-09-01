@@ -6,17 +6,17 @@ function CartProvider({ children }) {
   const [items, setItems] = useState([])
   const [total, setTotal] = useState(0)
 
-  //Funcionando
-  const addItem = (item, quantity, isInCart) => {
+  //Funcionando Add + isInACart
+  const addItem = (item, quantity, isInCart, id) => {
     const arrItems = [...items, { item, quantity, isInCart }];
-    setItems(arrItems)
+    !isInACart(id) ? setItems(arrItems) : moreQuantity(id, quantity)
   }
   //Funcionando
   const removeItem = (itemId, quantity) => {
     const arrItems = items.filter(item => item.item.id !== itemId)
     setItems(arrItems)
     setTotal(Number(total) - Number(quantity))
-
+  
   }
   //Funcionando
   const clearAll = () => {
@@ -24,7 +24,7 @@ function CartProvider({ children }) {
     setTotal([])
   }
   //Funcionando
-  const isInCart = (id) => items.some(item => item.item.id === id)
+  const isInACart = (id) => items.some(item => item.item.id === id)
   //Funcionando
   const moreQuantity = (id, quant) => {
     const product = items.find(item => item.item.id === id)
@@ -36,7 +36,7 @@ function CartProvider({ children }) {
   }
 
   return (
-    <CartContext.Provider value={{ items, total, addItem, removeItem, clearAll, isInCart, moreQuantity, totalQuantity }}>
+    <CartContext.Provider value={{ items, total, addItem, removeItem, clearAll, isInACart, moreQuantity, totalQuantity }}>
       { children }
     </CartContext.Provider>
   )

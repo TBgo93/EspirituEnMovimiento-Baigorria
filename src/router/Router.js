@@ -7,6 +7,7 @@ import Home from '../pages/Home';
 import NotFound from '../pages/404';
 import Cart from '../pages/Cart';
 import WishList from '../pages/WishList';
+import CheckOut from '../pages/CheckOut';
 
 
 function Router() {
@@ -29,6 +30,9 @@ function Router() {
           </Route>
           <Route path="/wishlist">
             <WishList />
+          </Route>
+          <Route path="/checkout">
+            <CheckOut />
           </Route>
           <Route path="*" component={NotFound} />
         </Switch>

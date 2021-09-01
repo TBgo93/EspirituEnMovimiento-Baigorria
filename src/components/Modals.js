@@ -79,12 +79,12 @@ function ModalVaciarCarrito(props) {
   )
 }
 
-function ModalAddCarrito(props) {
+function ModalAgregarCarrito(props) {
   const [open, setOpen] = useState(false)
 
   return (
     <Modal
-      onClose={setTimeout(() => setOpen(false), 1000)}
+      onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
       basic
@@ -92,17 +92,17 @@ function ModalAddCarrito(props) {
       trigger={props.children}
     >
       <Header icon>
-        <Icon color="green" name='check' />
+        <Icon color="blue" name='check' />
       </Header>
       <Modal.Content>
         <Modal.Description>
-          <span>
+          <p>
             Articulo agregado a Carrito!
-          </span>
+          </p>
         </Modal.Description>
       </Modal.Content>
     </Modal>
   )
 }
 
-export { ModalEliminarItem, ModalVaciarCarrito, ModalAddCarrito }
+export { ModalEliminarItem, ModalVaciarCarrito, ModalAgregarCarrito }

@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react'
-import { useHistory } from 'react-router';
-import { CartContext } from '../context/cartContext';
-import { Button, Card, Icon } from 'semantic-ui-react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { Button, Icon, Modal, Header } from 'semantic-ui-react'
+
 
 
 function HomeButton() {
@@ -34,50 +33,56 @@ function CartButton() {
     </>
   )
 }
-
-function AddMore({ id, stock }) {
-  const [itemCount, setItemCount] = useState(1);
-  const { moreQuantity, totalQuantity } = useContext(CartContext)
-  const history = useHistory();
-
-  const handleClick = () => {
-    history.push(`/cart`);
-    }
-
-  const itemIncrease = () => {
-    if(itemCount < stock){
-        setItemCount(itemCount + Number(1))
-    }
-  }
-  const itemDecrease = () => {
-    if(itemCount > 1){
-        setItemCount(itemCount - Number(1))
-    }
-  }
-
-  const moreItems = () => {
-    moreQuantity(id, itemCount)
-    totalQuantity(itemCount)
-    handleClick() 
-  }
+//Agregar y quitar de favoritos
+function ToggleFavorite({fnAdd, fnRemove, isInList}) {
+  const [open, setOpen] = useState(false)
 
   return (
-    <>
-      <Card.Content>
-        <div className="count-container">
-            <Button color='black' icon onClick={itemDecrease}>
-                <Icon name='minus' />
-            </Button>
-                <Card.Description>{itemCount}</Card.Description>
-            <Button color='black' icon onClick={itemIncrease}>
-                <Icon name='plus' />
-            </Button>
-        </div>
-        <Button color="blue" onClick={() => moreItems() }>Agregar mas cantidad</Button>
-      </Card.Content>
-    </>
+    <Modal
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      open={open}
+      basic
+      size='tiny'
+      trigger={
+        <Icon
+          size="small"
+          color={isInList ? 'red' : 'grey'}
+          name={`heart${isInList ? '' : ' outline'}`}
+          onClick={isInList ? fnRemove : fnAdd} />
+      }
+    >
+      <Header icon>
+        <Icon color={isInList ? 'green': 'red'} name={isInList ? 'check' : 'remove'} />
+      </Header>
+      <Modal.Content>
+        <Modal.Description>
+          <span>
+            {
+              isInList ? 'Articulo agregado a Favorito!' :'Articulo quitado a Favorito!'
+            }
+          </span>
+        </Modal.Description>
+      </Modal.Content>
+      <Modal.Actions>
+        <Button color='blue' onClick={() => setOpen(false)}>
+          Ok!
+        </Button>
+      </Modal.Actions>
+    </Modal>
   )
 }
 
+function CheckOutButton() {
+  
 
-export { CartButton, AddMore, HomeButton } 
+  return (
+      <NavLink to="/checkout">
+        <Button color='green'>
+          Terminar Compra
+        </Button>
+      </NavLink>
+  )
+}
+
+export { CartButton, HomeButton, ToggleFavorite, CheckOutButton } 
