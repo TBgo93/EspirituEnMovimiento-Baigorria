@@ -16,7 +16,7 @@ function ItemListContainer() {
     }, [id])
 
     return <>
-        <Container className="itemListContainer">
+        <Container className="full-container itemListContainer">
             {
                 products.length === 0 ? <Loading /> :
                 <>

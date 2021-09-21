@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
-import { } from 'semantic-ui-react'
 import CartWidget from './CartWidget';
 import WishListWidget from './WishListWidget'
+import UserpanelWidget from './UserpanelWidget'
 
 
 function NavBar() {
@@ -22,6 +22,7 @@ function NavBar() {
                     </NavLink>
                 </div>
                 <div className="navbar-nav">
+                    <UserpanelWidget />
                     <WishListWidget />
                     <CartWidget />
                 </div>

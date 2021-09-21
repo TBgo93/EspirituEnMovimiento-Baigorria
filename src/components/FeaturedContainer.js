@@ -17,7 +17,7 @@ function FeaturedContainer() {
             {
                 products.length === 0 ? <Loading /> : 
               <>
-                <h1>Destacados</h1>
+                <h1>Productos Destacados</h1>
                 <ItemList items={products} />
               </>
             }

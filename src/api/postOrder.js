@@ -1,11 +1,22 @@
 import { getFirestore } from '../firebase';
 
-export const postOrder = (newOrder, items) => {
+const handleFinishPurchase = (userInfo, listCart, totalPurchase, items, setOrder, clearAll) => {
   const db = getFirestore();
   const orders = db.collection("orders");
   const batch = db.batch();
 
-  const idPurchase = orders
+  const newOrder = {
+    buyer: {
+      name: userInfo.fullname,
+      phone: userInfo.phone,
+      email: userInfo.email,
+    },
+    items: listCart,
+    date: new Date(),
+    totalPurchase: totalPurchase,
+  };
+
+  orders
     .add(newOrder)
     .then((res) => {
       items.forEach(({ item, quantity }) => {
@@ -13,10 +24,9 @@ export const postOrder = (newOrder, items) => {
         batch.update(docRef, { stock: item.stock - quantity });
       });
       batch.commit();
-      const idPurchase = res.id;
-      return idPurchase
+      setOrder(res.id)
     })
-    .catch((err) => console.log(err));
-  
-  return idPurchase
+    .catch((err) => console.error(err))
+    .finally(() => clearAll())
 }
+export { handleFinishPurchase }

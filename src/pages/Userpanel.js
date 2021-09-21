@@ -1,15 +1,14 @@
 import React from 'react'
-import CheckOutContainer from '../components/CheckOutContainer'
+import UserpanelContainer from '../components/UserpanelContainer'
 import { Container } from 'semantic-ui-react'
 
 
-
-function CheckOut() {
+function Userpanel() {
   return (
     <Container className="full-container">
-      <CheckOutContainer />
+      <UserpanelContainer />
     </Container>
   )
 }
 
-export default CheckOut
+export default Userpanel

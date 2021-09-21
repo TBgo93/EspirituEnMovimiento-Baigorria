@@ -1,32 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../context/cartContext';
 import { Table } from 'semantic-ui-react'
+import { itemOnCart, itemsOnStorage } from '../helpers/functions'
 
 
 function CheckOutDetail() {
   const { items } = useContext(CartContext)
   const [totalPurchase, setTotalPurchase] = useState(0);
 
-  const listCart = items.map(item => {
-    const { quantity } = item
-    const { id, title, price } = item.item
-    return { id, title, price, quantity }
-  })
-
+  const listCart = itemOnCart(items, itemsOnStorage)
+  
   useEffect(() => {
-    if (items.length > 0) {
-      let currentTotal = 0;
-      items.forEach(({ item, quantity }) => {
-        currentTotal += item.price * quantity;
-      });
-      setTotalPurchase(currentTotal);
+    if (listCart.length > 0) {
+      const total = listCart.map(({ price, quantity }) => price * quantity,).reduce((acc, el) => acc + el)
+      setTotalPurchase(total)
     }
-  }, [items]);
+  },[listCart]);
 
   return (
     <div>
       <h3>Detalle de Compra</h3>
-      <Table basic='very'>
+      <Table basic='very' className="checkOutDetailTable">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Articulo</Table.HeaderCell>
@@ -34,17 +28,17 @@ function CheckOutDetail() {
             <Table.HeaderCell>SubTotal</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-        {
-          listCart.map(({ id, title, price, quantity }) =>
-            <Table.Body key={id}>
-            <Table.Row>
-              <Table.Cell>{title}</Table.Cell>
-              <Table.Cell>{quantity}</Table.Cell>
-              <Table.Cell>${Number(price) * Number(quantity)}</Table.Cell>
-            </Table.Row>
-          </Table.Body>
-          )
-        }
+        <Table.Body>
+          {
+            listCart.map(({ id, title, price, quantity }) =>
+              <Table.Row key={id}>
+                <Table.Cell>{title}</Table.Cell>
+                <Table.Cell>{quantity}</Table.Cell>
+                <Table.Cell>${Number(price) * Number(quantity)}</Table.Cell>
+              </Table.Row>
+            )
+          }
+        </Table.Body>
       </Table>
       <strong>
         Total de la compra: $ {totalPurchase}

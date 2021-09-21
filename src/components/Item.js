@@ -14,15 +14,17 @@ function Item(items) {
 
   return(
     <>
-      <Card>
+      <Card className="item">
         <Image src={pictureUrl} wrapped ui={false} />
         <Card.Content>
           <Card.Header>{title}</Card.Header>
-          <Card.Description>Precio: ${price}</Card.Description>
         </Card.Content>
-        <Button color='yellow' onClick={() => handleClick(id)}>
-          Ver Mas
-        </Button>
+        <div className="cardFooter">
+          <Card.Description>Precio: ${price}</Card.Description>
+          <Button color='yellow' onClick={() => handleClick(id)}>
+            Ver Mas
+          </Button>
+        </div>
       </Card>
     </>
   )

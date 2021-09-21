@@ -1,6 +1,5 @@
 import React,{ useState } from 'react'
 import { Button, Card, Icon } from 'semantic-ui-react'
-import { ModalAgregarCarrito } from './Modals'
 
 
 function ItemCount({ stock, initial, onAdd }) {
@@ -31,7 +30,6 @@ function ItemCount({ stock, initial, onAdd }) {
                         <Icon name='plus' />
                     </Button>
                 </div>
-                <ModalAgregarCarrito>
                 <Button
                     disabled={stock === 0 || stock === undefined ? true : false}
                     color="blue"
@@ -40,7 +38,6 @@ function ItemCount({ stock, initial, onAdd }) {
                         stock === 0 || stock === undefined ? 'Sin Stock' : 'Agregar al carrito'
                     }
                 </Button>
-                </ModalAgregarCarrito>
             </Card.Content>
         </>
     )

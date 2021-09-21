@@ -1,13 +1,20 @@
 body{
-    background-color: #ddd;
+    background-color: #EEF5DB;
+    /* background-color: #E6E8E6; */
     height: 100vh;
-
 }
-div.container{
-    margin-top: 5rem;
+h1{
+    margin-bottom: 3rem;
+}
+div.full-container{
+    position: relative;
+    top: 7rem;
+    padding-bottom: 6rem;
+    font-weight: 600;
+    min-height: 80vh;
 }
 .animationLink{
-    animation: destello 1.5s ease infinite;
+    animation: destello 1.6s ease infinite;
 }
 @keyframes destello {
     from {
@@ -16,6 +23,93 @@ div.container{
         0px 0px 16px #fbbd08, 0px 0px 32px #fbbd08, 0px 0px 32px #fbbd08;
     }
 }
+/* D-Flex center */
+.d-flex-center{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+}
+/* Login */
+.loginContainer{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 8.5rem;
+}
+.loginCard{
+    background: #1b1c1d !important;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem !important;
+    padding: 3rem 1rem !important;
+    margin: 0 !important
+}
+.loginCard form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.loginCard form .ui.input input:focus{
+    border: 1px solid #fbbd08;
+}
+.loginCard form.form.inverted button{
+    margin: 0.25rem 0;
+}
+.loginCard form.form.inverted a{
+    padding-top: 1rem;
+    text-align: center;
+}
+
+/* Userpanel */
+.userpanelHeader{
+    display: flex;
+    margin-bottom: 2.5rem;
+}
+.userpanelHeader h1{
+    width: 100%;
+}
+.userpanelTable{
+    width: 80%;
+    margin: 0 auto;
+}
+i.blue.plus.icon {
+    cursor: pointer;
+}
+.center-content{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+}
+.center-content a{
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1em;
+    letter-spacing: 0.7px;
+    color: #fff;
+    background: #2185d0;
+    padding: .78571429em 1.5em .78571429em;
+    border-radius: .28571429rem;
+}
+.center-content a:hover{
+    background-color: #1678c2;
+}
+.userOption{
+    display: flex !important;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+.blindPassword{
+    background: transparent !important;
+    padding: 0.25rem;
+    color: white !important;
+    cursor: pointer;
+}
+.menu.transition button, .menu.transition a{
+    width: 100%;
+    text-align: left;
+}
 /* Loader */
 .ui.big.active.text.centered.inline.loader.loader{
     position: absolute !important;
@@ -23,8 +117,11 @@ div.container{
     left: 50%;
 }
 /* Cart */
+div.cartContainer{
+    text-align: center;
+}
 table.ui.very.basic.table tr td:nth-child(6){
-    color: red;
+    color: #db2828;
     font-size: 0.9rem;
     cursor: pointer;
     border: none;
@@ -35,45 +132,72 @@ table.ui.very.basic.table tr td img{
     border-radius: 0;
 }
 strong.totalPrice{
-    margin: 0 2rem;
+    font-size: 1.20rem;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+.optionCart{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5rem;
 }
 /* Item */
-.ui.card {
-    height: 300px;
+.ui.card.item {
+    height: 280px;
     margin: auto;
+    border-radius: 1.125rem;
+}
+.ui.card.item .image{
+    border-radius: 1.125rem 1.125rem 0 0 !important;
+}
+.cardFooter{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.cardFooter .description{
+    margin: auto;
+}
+.cardFooter button{
+    border-radius: 1.125rem 0 !important;
+    margin: 0 !important;
 }
 .itemListContainer{
     font-weight: 600;
     text-align: center;
     padding: 1rem 0 2rem 0;
-    margin-top: 5rem;
+    /* margin-top: 5rem; */
 }
 .ItemList{
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fill, 254px);
-    gap: 1rem;
+    gap: 1.75rem;
     margin: 2rem 1rem;
 }
 /* Item Detail */
 .ItemDetail{
     display: flex;
+    position: relative;
     flex-direction: row;
     justify-content: center;
-    margin-top: 7rem;
+    top: 7rem;
 }
 .ItemDetail > .image,
 .ItemDetail > .image > img{
-    height: 370px;
+    height: 390px;
+    border-radius: 1.25rem 0 0 1.25rem !important;
 }
 .ItemDetail > .ui.card{
     margin: 0;
     height: auto;
+    border-radius: 0 1.25rem 1.25rem 0 !important;
 }
 .ItemDetail > .ui.card > .content{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    gap: 0.75rem;
 }
 .ItemDetail > .ui.card > .content > .header{
     display: flex;
@@ -135,6 +259,7 @@ div.nav-container{
 }
 .navbar-nav a.nav-link{
     padding: 0.75rem;
+    font-size: 1.125rem;
 }
 .navbar-toggler-icon{
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
@@ -176,26 +301,142 @@ table.basic.table tbody tr td span:last-child{
     display: flex !important;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-top: 2rem;
 }
-.checkOutContainer form{
+.checkOutContainer form.userInfo{
     width: 75vh !important;
-    background: #aaa;
+    background: #1b1c1d !important;
+    color: #fff;
     padding: 2rem;
     border-radius: 0.5rem;
 }
+.checkOutContainer form.userInfo .field>label{
+    color: #fff;
+}
+.idLoggedContainer{
+    margin: auto 0;
+    width: 350px !important;
+    font-weight: 600;
+}
+/* Modals */
+.ui.tiny.basic.modal,.ui.tiny.basic.modal .actions{
+    text-align: center;
+}
+.swal2-container{
+    background-color: rgba(0,0,0,.85) !important;
+}
+.swal2-popup{
+    background: transparent !important;
+}
+.swal2-title,
+.swal2-html-container {
+    color: #fff !important;
+}
 
 /* MediaQueries */
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 640px){
+    .userOption {
+        flex-direction: column-reverse;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ui.big.active.text.centered.inline.loader.loader {
+        position: absolute !important;
+        top: 35%;
+        left: 40%;
+    }
+    div.nav-container{
+        flex-direction: column;
+        margin: 0 auto;
+    }
+    .navbar-brand.active{
+        font-size: 1.125rem;
+    }
+    .navbar-nav .nav-link{
+        font-size: 0.95rem !important;
+    }
+    div.full-container {
+        top: 11rem;
+        width: 90% !important;
+    }
+    .ItemDetail > .image,
+    .ItemDetail > .image > img{
+        border-radius: 1.25rem 1.25rem 0 0 !important;
+    }
+    .ItemDetail > .ui.card{
+        border-radius: 0 0 1.25rem 1.25rem !important;
+    }
     .ItemDetail {
         display: flex;
+        position: relative;
         flex-direction: column;
         justify-content: center;
-        margin-top: 7rem;
+        top: 11rem;
         align-items: center;
     }
     .ItemDetail > .image,
     .ItemDetail > .image > img{
         height: auto;
         width: 290px;
+    }
+    .ui.very.basic.table.tableWishList thead tr,
+    .ui.very.basic.table.tableWishList tbody tr{
+        display: flex !important;
+        flex-direction: row;
+    }
+    
+    .ui.very.basic.table.tableWishList td,
+    .ui.very.basic.table.tableWishList th{
+        width: 100% !important;
+    }
+    .tableWishList tbody tr td img.image{
+        width: 3rem !important;
+    }
+    
+    .userOption botton.ui.red.button{
+        font-size: 0.92rem;
+    }
+    .userpanelTable table.ui.very.basic.table thead tr,
+    .userpanelTable table.ui.very.basic.table tbody tr{
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .ui.very.basic.table.cartTable thead tr,
+    .ui.very.basic.table.cartTable tbody tr{
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .ui.very.basic.table.cartTable tbody tr td:first-child,
+    .ui.very.basic.table.cartTable thead tr th:first-child{
+        display: none !important;
+    }
+    .ui.very.basic.table.cartTable tbody tr td:nth-child(2){
+        width: 20% !important;
+    }
+    strong.totalPrice {
+        margin: 0;
+    }
+    .optionCart {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .checkOutDetail {
+        flex-direction: column-reverse;
+        gap: 3rem;
+    }
+    .ui.very.basic.table.checkOutDetailTable thead tr,
+    .ui.very.basic.table.checkOutDetailTable tbody tr{
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+@media screen and (max-width: 768px) {
+    .idLoggedContainer {
+        margin: auto 0;
     }
 }

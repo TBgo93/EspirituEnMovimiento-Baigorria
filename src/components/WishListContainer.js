@@ -27,29 +27,31 @@ function WishListContainer() {
           </>
           :
           <>
-            <Table basic='very'>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell></Table.HeaderCell>
-                <Table.HeaderCell>Articulo</Table.HeaderCell>
-                <Table.HeaderCell>Precio</Table.HeaderCell>
-                <Table.HeaderCell>Accion</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            {
-              listWish.map(({ id, title, price, pictureUrl }) =>
-                <ItemWishList
-                  key={id}
-                  id={id}
-                  title={title}
-                  price={price}
-                  pictureUrl={pictureUrl}
-                />
-              )
-            }
+            <Table basic='very' className="tableWishList">
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell></Table.HeaderCell>
+                  <Table.HeaderCell>Articulo</Table.HeaderCell>
+                  <Table.HeaderCell>Precio</Table.HeaderCell>
+                  <Table.HeaderCell>Accion</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {
+                  listWish.map(({ id, title, price, pictureUrl }) =>
+                    <ItemWishList
+                      key={id}
+                      id={id}
+                      title={title}
+                      price={price}
+                      pictureUrl={pictureUrl}
+                    />
+                  )
+                }
+              </Table.Body>
             </Table>
             <Button animated color="blue" onClick={() => clearAll()}>
-              <Button.Content visible>Limpiar Wishlist</Button.Content>
+              <Button.Content visible>Vaciar Wishlist</Button.Content>
               <Button.Content hidden>
                 <Icon name='trash' />
               </Button.Content>

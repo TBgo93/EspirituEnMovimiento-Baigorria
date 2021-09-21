@@ -15,21 +15,18 @@ function ItemWishList({ id, title, price, pictureUrl }) {
 
   return(
     <>
-      <Table.Body>
-        <Table.Row>
-          <Table.Cell>
-            <Image avatar src={pictureUrl} alt={title} />
-          </Table.Cell>
-          <Table.Cell>{title}</Table.Cell>
-          <Table.Cell>${price}</Table.Cell>
-          <Table.Cell >
-            <span onClick={() => removeToList(id)}>Eliminar</span>
-            <br />
-            <span onClick={() => { removeToList(id); handleClick(id)}}>Comprar</span>
-          </Table.Cell>
-        </Table.Row>
-      </Table.Body>
-
+      <Table.Row>
+        <Table.Cell>
+          <Image avatar src={pictureUrl} alt={title} />
+        </Table.Cell>
+        <Table.Cell>{title}</Table.Cell>
+        <Table.Cell>${price}</Table.Cell>
+        <Table.Cell >
+          <span onClick={() => removeToList(id)}>Eliminar</span>
+          <br />
+          <span onClick={() => { removeToList(id); handleClick(id)}}>Comprar</span>
+        </Table.Cell>
+      </Table.Row>
     </>
   )
 }

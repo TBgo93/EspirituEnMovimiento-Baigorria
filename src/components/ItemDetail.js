@@ -1,11 +1,13 @@
 import React, { useContext } from 'react'
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Icon, Image } from 'semantic-ui-react';
 import { useHistory } from 'react-router';
 import { CartContext } from '../context/cartContext';
 import { WishListContext } from '../context/wishListContext';
 import ItemCount from './ItemCount'
 import Loading from './Loader'
-import { ToggleFavorite } from './CustomButtons'
+import { ToggleFavorite } from './Modals'
+import { ModalAgregarCarrito } from './Modals'
+
 
 
 function ItemDetail({ item }) {
@@ -17,6 +19,7 @@ function ItemDetail({ item }) {
 	const onAdd = (quantityOnAdd) => {
         addItem(item, quantityOnAdd, true, id)
         totalQuantity(quantityOnAdd)
+        ModalAgregarCarrito()
         setTimeout(() => {
             history.push(`/cart`)
         }, 575);
@@ -33,10 +36,20 @@ function ItemDetail({ item }) {
                     <Card.Content>
                         <Card.Header>
                             {title}
-                            <ToggleFavorite
-                                fnAdd={() => addList(item, true)}
-                                fnRemove={() => removeToList(id)}
-                                isInList={isInList(id)}
+                            <Icon
+                                size="small"
+                                color={isInList(id) ? 'red' : 'grey'}
+                                name={`heart${isInList(id) ? '' : ' outline'}`}
+                                onClick={isInList(id)
+                                    ? () => {
+                                        removeToList(id);
+                                        ToggleFavorite(isInList(id))
+                                    }
+                                    : () => {
+                                        addList(item, true);
+                                        ToggleFavorite(isInList(id))
+                                    }
+                                }
                             />
                         </Card.Header>
                         <Card.Description>{description}</Card.Description>

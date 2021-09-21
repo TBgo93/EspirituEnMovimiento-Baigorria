@@ -6,7 +6,7 @@ export const getProductsByCategories = (idCategory) => {
   const arrProducts = productsCollection.get()
   .then((querySnapshot) => {
     if (querySnapshot.size === 0) {
-        console.log('No products')
+      console.log('No products')
     }
     const arr = querySnapshot.docs.map(doc => {
       const { id } = doc

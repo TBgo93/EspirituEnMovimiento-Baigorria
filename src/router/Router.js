@@ -8,6 +8,11 @@ import NotFound from '../pages/404';
 import Cart from '../pages/Cart';
 import WishList from '../pages/WishList';
 import CheckOut from '../pages/CheckOut';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
+import Userpanel from '../pages/Userpanel';
+import NewPassword from '../pages/NewPassword'
+
 
 
 function Router() {
@@ -33,6 +38,18 @@ function Router() {
           </Route>
           <Route path="/checkout">
             <CheckOut />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/userpanel">
+            <Userpanel />
+          </Route>
+          <Route path="/newpassword">
+            <NewPassword />
+          </Route>
+          <Route path="/register">
+            <Register />
           </Route>
           <Route path="*" component={NotFound} />
         </Switch>
